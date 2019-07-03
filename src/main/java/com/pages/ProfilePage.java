@@ -34,7 +34,7 @@ public class ProfilePage extends BasePage {
         enterText(LAST_NAME, "Test");
         enterText(POSTAL_CODE, "H3C 1V8");
         selectByValue(COUNTRY, "CA");
-        selectByValue(BIRTH_MONTH, "04");
+        selectByValue(BIRTH_MONTH, "4");
         selectByVisibleText(BIRTH_DAY, "11");
         selectByVisibleText(BIRTH_YEAR, "1991");
         click(GET_MY_REWARD);
