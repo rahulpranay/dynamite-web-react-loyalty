@@ -16,6 +16,7 @@ public class LoginPage extends BasePage {
         clearAndEnterText(EMAIL, email);
         clearAndEnterText(PASSWORD, password);
         click(By.id("login-button"));
+        intentionalWait(3000);
         return new ProfilePage(driver);
     }
 

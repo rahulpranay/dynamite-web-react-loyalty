@@ -54,7 +54,7 @@ public class HomePage extends BasePage {
 
     public void validateAllFooterLinks() {
         validateEmailUsFooterLink();
-        validateFaqFooterLink();
+//        validateFaqFooterLink();
         validateAboutDynamiteFooterLink();
         validateFindAStoreFooterLink();
         validateCareersFooterLink();

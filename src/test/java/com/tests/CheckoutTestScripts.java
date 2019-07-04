@@ -151,6 +151,7 @@ public class CheckoutTestScripts extends BaseTest {
     CreateAccountPage createAccountPage = loginPage.clickCreateAccountButton();
     ProfilePage profilePage = createAccountPage.enterAccountDetails();
     profilePage.fillPersonalDetails();
+    homePage = homePage.navigateToHomePage();
     homePage.validateAllFooterLinks();
   }
 
@@ -162,7 +163,8 @@ public class CheckoutTestScripts extends BaseTest {
     CreateAccountPage createAccountPage = loginPage.clickCreateAccountButton();
     ProfilePage profilePage = createAccountPage.enterAccountDetails();
     profilePage.fillPersonalDetails();
-    CategoryPage categoryPage = profilePage.searchWithCategory("TOPS");
+    homePage = homePage.navigateToHomePage();
+    CategoryPage categoryPage = homePage.searchWithCategory("TOPS");
     ProductPage productPage = categoryPage.navigateToProductPage();
     productPage.addToBag();
     CartPage cartPage = productPage.navigateToCartPage();

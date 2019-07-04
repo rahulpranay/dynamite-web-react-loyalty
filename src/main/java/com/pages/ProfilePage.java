@@ -20,8 +20,8 @@ public class ProfilePage extends BasePage {
     private static By PHONE_NUMBER = By.name("phoneNumber");
     private static By STATE = By.name("state");
     private static By BTN_CLOSE = By.xpath("//div[@class = 'loyaltyActionBtns']/div");
-    private static By PROFILE_ICON = By.xpath("//li[@id = 'accountLink'][@class = 'welcomeLink']");
-    private static By STUDIO_LINK = By.id("dashboard");
+    private static By PROFILE_ICON = By.xpath("//li[@id = 'accountLink'][@class = 'welcomeLink'] | //div[contains(@class, 'LoggedInProfilecomponent__ProfileThumbWrapper')]");
+    private static By STUDIO_LINK = By.id("profile-studio");
     private static By TOAST_MESSAGE_BANNER = By.xpath("//div[contains(@class, 'ToastNotification__Message')]//span");
 
     public ProfilePage(WebDriver driver) {
