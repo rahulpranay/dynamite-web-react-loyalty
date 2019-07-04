@@ -7,9 +7,9 @@ import org.testng.Assert;
 
 public class ProductPage extends BasePage {
 
-    private static final String PRODUCT_NAME = "//div[contains(@class, 'pdpstyle__PdpTitle')]";
-    private static final String PRODUCT_PRICE = "//div[contains(@class, 'pdpstyle__PdpPrice')]/span[last()]";
-    private static final String PRODUCT_SIZE = "//div[contains(@class, 'available selectorsstyle__SizeTileStyle')][not(contains(@class, 'unavailable'))]/button";
+    private static final String PRODUCT_NAME = "//*[contains(@class, 'pdpstyle__PdpTitle')]";
+    private static final String PRODUCT_PRICE = "//div[contains(@class, 'pdpstyle__PdpPrice')]//span[last()]";
+    private static final String PRODUCT_SIZE = "//*[contains(@class, 'available selectorsstyle__SizeTileStyle')][not(contains(@class, 'unavailable'))]/button";
     private static final By WRITE_REVIEW = By.xpath("//a[contains(@class, 'bv-write-review-label')] | //button[contains(@class, 'bv-write-review')]");
     private static final By OVERALL_RATING = By.cssSelector("#bv-radio-rating-5");
     private static final By REVIEW_TITLE = By.id("bv-text-field-title");
