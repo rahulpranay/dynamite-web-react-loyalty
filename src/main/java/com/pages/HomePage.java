@@ -214,8 +214,9 @@ public class HomePage extends BasePage {
     }
 
     public void validateJoinTheCommunityFooterLink() {
+        intentionalWait(1000);
         WebElement webElement = waitForElement(By.xpath("//div[@class = 'top-row']//li[@class = 'all-li']/a[normalize-space(text()) = 'Join the community']"));
-        webElement.click();
+        clickUsingJS(webElement);
         intentionalWait(1000);
         String title = driver.getTitle().toLowerCase();
         String errorMessage = String.format("Current page title is '%s' : ", title);
