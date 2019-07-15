@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 public class ProductPage extends BasePage {
 
-    private static final String PRODUCT_NAME = "//*[contains(@class, 'pdpstyle__PdpTitle')]";
+    public static final String PRODUCT_NAME = "//*[contains(@class, 'pdpstyle__PdpTitle')]";
     private static final String PRODUCT_PRICE = "//div[contains(@class, 'pdpstyle__PdpPrice')]//span[last()]";
     private static final String PRODUCT_SIZE = "//*[contains(@class, 'available selectorsstyle__SizeTileStyle')][not(contains(@class, 'unavailable'))]/button";
     private static final By WRITE_REVIEW = By.xpath("//a[contains(@class, 'bv-write-review-label')] | //button[contains(@class, 'bv-write-review')]");
@@ -32,6 +32,7 @@ public class ProductPage extends BasePage {
     private static final By FIND_IN_STORE_SUBMIT = By.id("pdp_fis_zip_submit");
     private static final By FIND_IN_STORE_RESULTS = By.id("pdp_fis_result");
     private static final By SIZE_CHART = By.id("pdp_sizechart");
+    private static final By STYLE_NUMBER = By.xpath("//div[contains(@class, 'productInfostyle__PdpStyleNumber')]");
     private String productName;
     private String productPrice;
     private String reviewTitle;
@@ -151,6 +152,11 @@ public class ProductPage extends BasePage {
     public String getProductStyleNumber() {
         String[] url = driver.getCurrentUrl().split("/");
         styleNumber = url[url.length - 1];
+        return styleNumber;
+    }
+
+    public String storeStyleNumber() {
+        styleNumber = waitForElement(STYLE_NUMBER).getText().split("#")[1].trim();
         return styleNumber;
     }
 

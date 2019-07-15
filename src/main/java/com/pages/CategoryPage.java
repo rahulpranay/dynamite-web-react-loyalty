@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class CategoryPage extends BasePage {
 
-    private static final By PRODUCT_NAME = By.xpath("//a[contains(@class, 'contentfulTile__TileTitleLink')] | //div[@class = 'pdl_details']/p/a");
+    public static final By PRODUCT_NAME = By.xpath("//a[contains(@class, 'contentfulTile__TileTitleLink')] | //div[@class = 'pdl_details']/p/a | //a[contains(@class, 'algoliaTile__TileTitleLink')]");
     private static final String ADD_TO_BAG = "addToCartHover_btn_0_";
     private static final By PRODUCT_SIZE = By.xpath("//div[contains(@class, 'available overlaycomponent__Size')][not(contains(@class, 'not-available'))]");
     private static final By ADD_TO_BAG_BUTTON = By.xpath("//button[contains(@id, 'addToCart_btn')]");
@@ -21,7 +21,11 @@ public class CategoryPage extends BasePage {
     private static final By HIGH_TO_LOW = By.id("price_desc");
     private static final By NEW_ARRIVALS_FILTER = By.id("new_arrivals");
     private static final By PRICE = By.xpath("//div[contains(@class, 'contentfulTile__PriceDiv')]");
-    private static final By FIRST_PRODUCT = By.xpath("//a[contains(@class, 'contentfulTile__TileTitleLink')]");
+    private static final By FIRST_PRODUCT = By.xpath("//a[contains(@class, 'contentfulTile__TileTitleLink')] | //a[contains(@class, 'algoliaTile__TileTitleLink')]");
+    private static final By SIZE_FILTER = By.id("size");
+    private static final By SIZE_FILTER_VALUE = By.id("_L");
+    private static final By COLOR_FILTER = By.id("colour");
+    private static final By COLOR_FILTER_VALUE = By.id("White");
 
     private String productName;
 
@@ -33,6 +37,16 @@ public class CategoryPage extends BasePage {
         List<WebElement> list = listOfVisibleElements(PRODUCT_NAME);
         Random random = new Random();
         clickUsingJS(list.get(random.nextInt(list.size() - 1)));
+        intentionalWait(2000);
+        closeLoyaltyOnBoarding();
+        intentionalWait(2000);
+        return new ProductPage(driver);
+    }
+
+    public ProductPage navigateToMiddleProductPage() {
+        List<WebElement> products = listOfVisibleElements(PRODUCT_NAME);
+        int productIndex = products.size()/2;
+        clickUsingJS(products.get(productIndex));
         intentionalWait(2000);
         closeLoyaltyOnBoarding();
         intentionalWait(2000);
@@ -103,5 +117,19 @@ public class CategoryPage extends BasePage {
 
     public String getFirstProductStyleNumber() {
         return waitForElement(FIRST_PRODUCT).getAttribute("href");
+    }
+
+    public void applySizeFilter() {
+        waitForElement(SIZE_FILTER).click();
+        clickUsingJS(locateElement(SIZE_FILTER_VALUE));
+        waitForPageLoad();
+        intentionalWait(5000);
+    }
+
+    public void applyColorFilter() {
+        waitForElement(COLOR_FILTER).click();
+        clickUsingJS(locateElement(COLOR_FILTER_VALUE));
+        waitForPageLoad();
+        intentionalWait(5000);
     }
 }

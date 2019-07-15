@@ -109,6 +109,17 @@ public class BasePage {
         return new CategoryPage(driver);
     }
 
+    public CategoryPage navigateToCategoryPage(int categoryIndex) {
+        String xpath = "//span[@class = 'categoryMenuItemSpan']/a | //div[contains(@id, 'top-category-link')]";
+        waitForElement(By.xpath(xpath));
+        List<WebElement> categories = listOfVisibleElements(By.xpath(xpath));
+        categories.get(categoryIndex - 1).click();
+        intentionalWait(2000);
+        closeLoyaltyOnBoarding();
+        intentionalWait(3000);
+        return new CategoryPage(driver);
+    }
+
     public void closePopup() {
         String id = "cboxClose";
         click(By.id(id));
@@ -300,5 +311,15 @@ public class BasePage {
         if (isElementPresent(by)) {
             click(by);
         }
+    }
+
+    public void waitForPageLoad() {
+        new WebDriverWait(driver, 30).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+    }
+
+    public void navigateBrowserBack() {
+        driver.navigate().back();
+        waitForPageLoad();
     }
 }
