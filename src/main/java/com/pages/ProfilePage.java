@@ -37,7 +37,8 @@ public class ProfilePage extends BasePage {
         selectByValue(BIRTH_MONTH, "4");
         selectByVisibleText(BIRTH_DAY, "11");
         selectByVisibleText(BIRTH_YEAR, "1991");
-        click(GET_MY_REWARD);
+        intentionalWait(2000);
+        clickUsingJS(waitForElement(GET_MY_REWARD));
         waitForElement(TOAST_MESSAGE_BANNER);
     }
 
