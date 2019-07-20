@@ -17,6 +17,9 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.variables.PropertiesKey.MOBILE_APPLICATION_URL;
+import static com.variables.TestConstants.UI_PROPERTIES;
+
 public class BasePage {
 
     private final int ELEMENT_WAIT_TIME = 30;
@@ -258,6 +261,7 @@ public class BasePage {
 
     public void refreshPage() {
         driver.navigate().refresh();
+        intentionalWait(2000);
     }
 
     public void navigateToFrench() {
@@ -265,24 +269,25 @@ public class BasePage {
     }
 
     public MobileHomePage navigateToMobileGarageHomePage() {
-//        click(By.xpath("//button[@id = 'hamburgerMenu_icon'] | //a[@id = 'burger']"));
-//        intentionalWait(1000);
-//        clickUsingJS(waitForElement(By.xpath("//a[contains(@class, 'leftMenuSisterBrandLogo')] | //a[@aria-label = 'Garage']")));
-        driver.navigate().to("https://uat3.garageclothing.com/ca");
+        String applicationUrl = UI_PROPERTIES.getProperty(MOBILE_APPLICATION_URL);
+        applicationUrl = applicationUrl.replace("dynamite", "garage");
+        driver.navigate().to(applicationUrl);
         intentionalWait(5000);
         return new MobileHomePage(driver);
     }
 
     public MobileCategoryPage searchWithItemInMobile(String searchKeyword) {
-        click(By.id("search"));
-        enterText(By.id("searchTextNoResults"), searchKeyword);
+        click(By.id("OpenSearchIcon"));
+        enterText(By.id("searchMobileInputId"), searchKeyword);
         new Actions(driver).sendKeys(Keys.ENTER).perform();
         intentionalWait(5000);
         return new MobileCategoryPage(driver);
     }
 
     public void clickOnMenuIcon() {
-        click(By.xpath("//button[@id = 'hamburgerMenu_icon'] | //a[@id = 'burger']"));
+        String xpath = "//button[@id = 'hamburgerMenu_icon'] | //a[@id = 'burger']";
+        waitForElementToClickable(By.xpath(xpath));
+        click(By.xpath(xpath));
     }
 
     public MobileHomePage navigateToMobileHomePage() {

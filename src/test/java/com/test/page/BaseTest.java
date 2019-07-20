@@ -30,10 +30,12 @@ public class BaseTest {
         String browser = UI_PROPERTIES.getProperty(BROWSER_NAME);
         if (browser.equalsIgnoreCase("mobile-chrome")) {
             applicationUrl = UI_PROPERTIES.getProperty(MOBILE_APPLICATION_URL);
+            d.getDriver().get(applicationUrl);
+            d.getDriver().navigate().refresh();
         } else {
             applicationUrl = UI_PROPERTIES.getProperty(APPLICATION_URL);
+            d.getDriver().get(applicationUrl);
         }
-        d.getDriver().get(applicationUrl);
 //        d.getDriver().manage().deleteAllCookies();
 //        Cookie reactTwo = new Cookie("dy_disable_tests","true");
 //        Cookie react = new Cookie("rover_stage","v10-1-2-prod");

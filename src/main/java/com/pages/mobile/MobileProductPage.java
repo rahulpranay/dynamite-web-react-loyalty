@@ -7,15 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class MobileProductPage extends BasePage {
 
-    private String productSize;
-    private String productPrice;
-
-    private static By SIZE = By.xpath("//div[contains(@class, 'selectorsstyle__SizeTileStyle')][not(contains(@class, 'unavailable'))]");
-    private static By ADD_TO_BAG = By.id("pdp_addtobag_btn");
-    private static By SUCCESS_MESSAGE = By.id("addToBagSuccess");
-    private static By PRICE_XPATH = By.xpath("//div[contains(@class, 'pdpstyle__PdpPriceMobile')]/span[last()]");
     private static final By FIND_IN_STORE = By.xpath("//button[@id = 'pdp_fis_btn']");
     private static final By FIND_IN_STORE_TITLE = By.xpath("//div[contains(@class, 'FindInStore__Title')]");
     private static final By FIND_IN_STORE_ZIP_CODE_BTN = By.id("pdp_fis_use_zip");
@@ -37,6 +33,12 @@ public class MobileProductPage extends BasePage {
     private static final By REVIEW_HEADER = By.xpath("//h4[@class = 'bv-content-title']");
     private static final By REVIEWER_NAME = By.id("bv-text-field-usernickname");
     private static final By REVIEWER_EMAIL = By.id("bv-email-field-hostedauthentication_authenticationemail");
+    private static By SIZE = By.xpath("//div[contains(@class, 'selectorsstyle__SizeTileStyle')][not(contains(@class, 'unavailable'))] | //li[contains(@class, 'selectorsstyle__SizeTileStyle')][not(contains(@class, 'unavailable'))]");
+    private static By ADD_TO_BAG = By.id("pdp_addtobag_btn");
+    private static By SUCCESS_MESSAGE = By.id("addToBagSuccess");
+    private static By PRICE_XPATH = By.xpath("//div[contains(@class, 'pdpstyle__PdpPriceMobile')]//span[last()]");
+    private String productSize;
+    private String productPrice;
     private String reviewTitle;
     private String styleNumber;
 
@@ -53,8 +55,10 @@ public class MobileProductPage extends BasePage {
 
     public void addToBag() {
         selectSize();
-        click(ADD_TO_BAG);
-        intentionalWait(5000);
+        intentionalWait(1000);
+        WebElement addToBag = waitForElement(ADD_TO_BAG);
+        clickUsingJS(addToBag);
+        intentionalWait(4000);
     }
 
     public String getAddToBagSuccessMessage() {
@@ -106,10 +110,12 @@ public class MobileProductPage extends BasePage {
 
     public void closeReviewPopup() {
         click(CLOSE_ICON);
+        intentionalWait(5000);
     }
 
-    public String getReviewHeader() {
-        return waitForElement(REVIEW_HEADER).getText().trim();
+    public List<String> getReviewHeader() {
+        waitForElement(REVIEW_HEADER);
+        return listOfVisibleElements(REVIEW_HEADER).stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
     public String getReviewTitle() {

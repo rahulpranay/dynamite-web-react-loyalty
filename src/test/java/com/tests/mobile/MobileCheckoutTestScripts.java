@@ -1,13 +1,17 @@
 package com.tests.mobile;
 
+import com.pages.ProfilePage;
 import com.pages.mobile.*;
+import com.reports.ReportListener;
 import com.test.page.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Listeners(ReportListener.class)
 public class MobileCheckoutTestScripts extends BaseTest {
 
     @Test
@@ -27,8 +31,8 @@ public class MobileCheckoutTestScripts extends BaseTest {
         mobileCheckoutPage.selectShipToMe();
         mobileCheckoutPage.enterAddress();
         mobileCheckoutPage.enterCreditCardDetails();
-        mobileCheckoutPage.clickOnPlaceYourOrder();
-        System.out.println(mobileCheckoutPage.getOrderNumber());
+//        mobileCheckoutPage.clickOnPlaceYourOrder();
+//        System.out.println(mobileCheckoutPage.getOrderNumber());
     }
 
     @Test
@@ -36,9 +40,9 @@ public class MobileCheckoutTestScripts extends BaseTest {
         MobileHomePage mobileHomePage = new MobileHomePage(getDriver());
         mobileHomePage.closeDialogPopupIfPresent();
         MobileLoginPage mobileLoginPage = mobileHomePage.navigateToMobileLoginPage();
-        mobileHomePage = mobileLoginPage.createAccount();
-        mobileHomePage.refreshPage();
-        Assert.assertEquals("welcome", mobileHomePage.getProfileWelcomeText());
+        ProfilePage profilePage = mobileLoginPage.createAccount();
+        profilePage.fillPersonalDetails();
+        profilePage.clickOnMenuIcon();
         MobileCategoryPage mobileCategoryPage = mobileHomePage.navigateToCategoryPage();
         mobileHomePage.closeDialogPopupIfPresent();
         MobileProductPage mobileProductPage = mobileCategoryPage.navigateToProductPage();
@@ -51,8 +55,8 @@ public class MobileCheckoutTestScripts extends BaseTest {
         mobileCheckoutPage.selectShipToMe();
         mobileCheckoutPage.enterAddress();
         mobileCheckoutPage.enterCreditCardDetails();
-        mobileCheckoutPage.clickOnPlaceYourOrder();
-        System.out.println(mobileCheckoutPage.getOrderNumber());
+//        mobileCheckoutPage.clickOnPlaceYourOrder();
+//        System.out.println(mobileCheckoutPage.getOrderNumber());
     }
 
     @Test
@@ -75,8 +79,8 @@ public class MobileCheckoutTestScripts extends BaseTest {
         mobileCheckoutPage.selectShipToMe();
         mobileCheckoutPage.enterAddress();
         mobileCheckoutPage.enterCreditCardDetails();
-        mobileCheckoutPage.clickOnPlaceYourOrder();
-        System.out.println(mobileCheckoutPage.getOrderNumber());
+//        mobileCheckoutPage.clickOnPlaceYourOrder();
+//        System.out.println(mobileCheckoutPage.getOrderNumber());
     }
 
     @Test
@@ -84,9 +88,9 @@ public class MobileCheckoutTestScripts extends BaseTest {
         MobileHomePage mobileHomePage = new MobileHomePage(getDriver());
         mobileHomePage.closeDialogPopupIfPresent();
         MobileLoginPage mobileLoginPage = mobileHomePage.navigateToMobileLoginPage();
-        mobileHomePage = mobileLoginPage.createAccount();
-        mobileHomePage.refreshPage();
-        Assert.assertEquals("welcome", mobileHomePage.getProfileWelcomeText());
+        ProfilePage profilePage = mobileLoginPage.createAccount();
+        profilePage.fillPersonalDetails();
+        profilePage.clickOnMenuIcon();
         MobileCategoryPage mobileCategoryPage = mobileHomePage.navigateToCategoryPage();
         mobileHomePage.closeDialogPopupIfPresent();
         MobileProductPage mobileProductPage = mobileCategoryPage.navigateToProductPage();
@@ -99,8 +103,8 @@ public class MobileCheckoutTestScripts extends BaseTest {
         mobileCheckoutPage.selectShipToMe();
         mobileCheckoutPage.enterAddressToGetUseAddressPopup();
         mobileCheckoutPage.enterCreditCardDetails();
-        mobileCheckoutPage.clickOnPlaceYourOrder();
-        System.out.println(mobileCheckoutPage.getOrderNumber());
+//        mobileCheckoutPage.clickOnPlaceYourOrder();
+//        System.out.println(mobileCheckoutPage.getOrderNumber());
     }
 
     @Test
@@ -108,9 +112,9 @@ public class MobileCheckoutTestScripts extends BaseTest {
         MobileHomePage mobileHomePage = new MobileHomePage(getDriver());
         mobileHomePage.closeDialogPopupIfPresent();
         MobileLoginPage mobileLoginPage = mobileHomePage.navigateToMobileLoginPage();
-        mobileHomePage = mobileLoginPage.createAccount();
-        mobileHomePage.refreshPage();
-        Assert.assertEquals("welcome", mobileHomePage.getProfileWelcomeText());
+        ProfilePage profilePage = mobileLoginPage.createAccount();
+        profilePage.fillPersonalDetails();
+        profilePage.clickOnMenuIcon();
         MobileCategoryPage mobileCategoryPage = mobileHomePage.navigateToCategoryPage();
         mobileHomePage.closeDialogPopupIfPresent();
         MobileProductPage mobileProductPage = mobileCategoryPage.navigateToProductPage();
@@ -122,9 +126,9 @@ public class MobileCheckoutTestScripts extends BaseTest {
         MobileHomePage mobileHomePage = new MobileHomePage(getDriver());
         mobileHomePage.closeDialogPopupIfPresent();
         MobileLoginPage mobileLoginPage = mobileHomePage.navigateToMobileLoginPage();
-        mobileHomePage = mobileLoginPage.createAccount();
-        mobileHomePage.refreshPage();
-        Assert.assertEquals("welcome", mobileHomePage.getProfileWelcomeText());
+        ProfilePage profilePage = mobileLoginPage.createAccount();
+        profilePage.fillPersonalDetails();
+        profilePage.clickOnMenuIcon();
         MobileCategoryPage mobileCategoryPage = mobileHomePage.navigateToCategoryPage();
         mobileHomePage.closeDialogPopupIfPresent();
         MobileProductPage mobileProductPage = mobileCategoryPage.navigateToProductPage();
@@ -146,8 +150,8 @@ public class MobileCheckoutTestScripts extends BaseTest {
         mobileCheckoutPage.selectShipToMe();
         mobileCheckoutPage.enterAddress();
         mobileCheckoutPage.enterCreditCardDetails();
-        mobileCheckoutPage.clickOnPlaceYourOrder();
-        System.out.println(mobileCheckoutPage.getOrderNumber());
+//        mobileCheckoutPage.clickOnPlaceYourOrder();
+//        System.out.println(mobileCheckoutPage.getOrderNumber());
     }
 
     @Test
@@ -155,9 +159,9 @@ public class MobileCheckoutTestScripts extends BaseTest {
         MobileHomePage mobileHomePage = new MobileHomePage(getDriver());
         mobileHomePage.closeDialogPopupIfPresent();
         MobileLoginPage mobileLoginPage = mobileHomePage.navigateToMobileLoginPage();
-        mobileHomePage = mobileLoginPage.createAccount();
-        mobileHomePage.refreshPage();
-        Assert.assertEquals("welcome", mobileHomePage.getProfileWelcomeText());
+        ProfilePage profilePage = mobileLoginPage.createAccount();
+        profilePage.fillPersonalDetails();
+        profilePage.clickOnMenuIcon();
         MobileCategoryPage mobileCategoryPage = mobileHomePage.navigateToCategoryPage();
         mobileHomePage.closeDialogPopupIfPresent();
         mobileCategoryPage.sortLowToHigh();
@@ -184,8 +188,8 @@ public class MobileCheckoutTestScripts extends BaseTest {
         mobileCheckoutPage.selectShipToMe();
         mobileCheckoutPage.enterAddress();
         mobileCheckoutPage.enterCreditCardDetails();
-        mobileCheckoutPage.clickOnPlaceYourOrder();
-        System.out.println(mobileCheckoutPage.getOrderNumber());
+//        mobileCheckoutPage.clickOnPlaceYourOrder();
+//        System.out.println(mobileCheckoutPage.getOrderNumber());
     }
 
     @Test
@@ -193,15 +197,12 @@ public class MobileCheckoutTestScripts extends BaseTest {
         MobileHomePage mobileHomePage = new MobileHomePage(getDriver());
         mobileHomePage.closeDialogPopupIfPresent();
         MobileLoginPage mobileLoginPage = mobileHomePage.navigateToMobileLoginPage();
-        mobileHomePage = mobileLoginPage.createAccount();
-        mobileHomePage.refreshPage();
-        Assert.assertEquals("welcome", mobileHomePage.getProfileWelcomeText());
-        mobileHomePage.refreshPage();
+        ProfilePage profilePage = mobileLoginPage.createAccount();
+        profilePage.fillPersonalDetails();
         MobileCategoryPage mobileCategoryPage = mobileHomePage.searchWithItemInMobile("Tops");
         MobileProductPage mobileProductPage = mobileCategoryPage.navigateToProductPage();
         mobileProductPage.addToBag();
-        mobileHomePage = mobileCategoryPage.navigateToMobileHomePage();
-        mobileCategoryPage = mobileHomePage.searchWithItemInMobile("Jeans");
+        mobileCategoryPage = mobileProductPage.searchWithItemInMobile("Jeans");
         mobileProductPage = mobileCategoryPage.navigateToProductPage();
         mobileProductPage.addToBag();
         MobileCartPage mobileCartPage = mobileProductPage.navigateToMobileCartPage();
@@ -211,8 +212,8 @@ public class MobileCheckoutTestScripts extends BaseTest {
         mobileCheckoutPage.selectShipToMe();
         mobileCheckoutPage.enterAddress();
         mobileCheckoutPage.enterCreditCardDetails();
-        mobileCheckoutPage.clickOnPlaceYourOrder();
-        System.out.println(mobileCheckoutPage.getOrderNumber());
+//        mobileCheckoutPage.clickOnPlaceYourOrder();
+//        System.out.println(mobileCheckoutPage.getOrderNumber());
     }
 
     @Test
@@ -220,16 +221,16 @@ public class MobileCheckoutTestScripts extends BaseTest {
         MobileHomePage mobileHomePage = new MobileHomePage(getDriver());
         mobileHomePage.closeDialogPopupIfPresent();
         MobileLoginPage mobileLoginPage = mobileHomePage.navigateToMobileLoginPage();
-        mobileHomePage = mobileLoginPage.createAccount();
-        mobileHomePage.refreshPage();
-        Assert.assertEquals("welcome", mobileHomePage.getProfileWelcomeText());
+        ProfilePage profilePage = mobileLoginPage.createAccount();
+        profilePage.fillPersonalDetails();
+        profilePage.clickOnMenuIcon();
         MobileCategoryPage mobileCategoryPage = mobileHomePage.navigateToCategoryPage();
         mobileHomePage.closeDialogPopupIfPresent();
         MobileProductPage mobileProductPage = mobileCategoryPage.navigateToProductPage();
         mobileProductPage.writeReview();
         Assert.assertEquals("Your review was submitted!", mobileProductPage.getSuccessReviewMessage());
         mobileProductPage.closeReviewPopup();
-        Assert.assertEquals(mobileProductPage.getReviewHeader(), mobileProductPage.getReviewTitle());
+        Assert.assertTrue(mobileProductPage.getReviewHeader().contains(mobileProductPage.getReviewTitle()));
     }
 
     @Test
@@ -237,9 +238,9 @@ public class MobileCheckoutTestScripts extends BaseTest {
         MobileHomePage mobileHomePage = new MobileHomePage(getDriver());
         mobileHomePage.closeDialogPopupIfPresent();
         MobileLoginPage mobileLoginPage = mobileHomePage.navigateToMobileLoginPage();
-        mobileHomePage = mobileLoginPage.createAccount();
-        mobileHomePage.refreshPage();
-        Assert.assertEquals("welcome", mobileHomePage.getProfileWelcomeText());
+        ProfilePage profilePage = mobileLoginPage.createAccount();
+        profilePage.fillPersonalDetails();
+        profilePage.clickOnMenuIcon();
         MobileCategoryPage mobileCategoryPage = mobileHomePage.navigateToCategoryPage();
         mobileHomePage.closeDialogPopupIfPresent();
         MobileProductPage mobileProductPage = mobileCategoryPage.navigateToFirstProductPage();
@@ -260,7 +261,7 @@ public class MobileCheckoutTestScripts extends BaseTest {
         mobileCheckoutPage.selectShipToMe();
         mobileCheckoutPage.enterAddress();
         mobileCheckoutPage.enterCreditCardDetails();
-        mobileCheckoutPage.clickOnPlaceYourOrder();
-        System.out.println(mobileCheckoutPage.getOrderNumber());
+//        mobileCheckoutPage.clickOnPlaceYourOrder();
+//        System.out.println(mobileCheckoutPage.getOrderNumber());
     }
 }

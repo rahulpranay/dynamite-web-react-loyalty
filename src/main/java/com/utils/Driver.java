@@ -62,7 +62,7 @@ public class Driver {
                 break;
             case "MOBILE-CHROME":
                 chromeOptions = chromeMobileEmulationOptions("iPhone X");
-                chromeOptions.setHeadless(true);
+//                chromeOptions.setHeadless(true);
                 WebDriverManager.chromedriver().setup();
                 driver.set(new ChromeDriver(chromeOptions));
                 break;

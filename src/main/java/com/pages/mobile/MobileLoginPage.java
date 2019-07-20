@@ -1,6 +1,7 @@
 package com.pages.mobile;
 
 import com.pages.BasePage;
+import com.pages.ProfilePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -20,14 +21,14 @@ public class MobileLoginPage extends BasePage {
         super(driver);
     }
 
-    public MobileHomePage createAccount() {
+    public ProfilePage createAccount() {
         click(CREATE_ACCOUNT);
         enterText(EMAIL, generateEmail());
         enterText(PASSWORD, "Loyalty01");
         click(TERMS_N_CONDITIONS);
         click(JOIN_NOW);
-        intentionalWait(10000);
-        return new MobileHomePage(driver);
+        intentionalWait(5000);
+        return new ProfilePage(driver);
     }
 
     public MobileHomePage loginToAccount(String email, String password) {

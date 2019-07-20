@@ -25,8 +25,8 @@ public class MobileCategoryPage extends BasePage {
     public MobileProductPage navigateToProductPage() {
         WebElement product = waitForElement(PRODUCT_NAME);
         List<WebElement> listOfProducts = listOfVisibleElements(PRODUCT_NAME);
-        productName = listOfProducts.get(2).getText().trim();
-        listOfProducts.get(2).click();
+        productName = listOfProducts.get(4).getText().trim();
+        listOfProducts.get(4).click();
         intentionalWait(4000);
         return new MobileProductPage(driver);
     }
