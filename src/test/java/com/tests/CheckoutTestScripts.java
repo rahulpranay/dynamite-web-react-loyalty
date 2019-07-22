@@ -293,15 +293,15 @@ public class CheckoutTestScripts extends BaseTest {
                 String.format("First product style number is %s", firstProductStyleNumber));
     }
 
-    @Test
-    public void validatePlpAfterComingBackFromPdp() {
-        HomePage homePage = new HomePage(d.getDriver());
-        homePage.closeDialogPopupIfPresent();
-        CategoryPage categoryPage = homePage.navigateToCategoryPage("NEW");
-        ProductPage productPage = categoryPage.navigateToProductPage();
-        productPage.navigateBrowserBack();
-        Assert.assertTrue(categoryPage.isElementPresent(PRODUCT_NAME), "Its not in PLP page");
-    }
+//    @Test
+//    public void validatePlpAfterComingBackFromPdp() {
+//        HomePage homePage = new HomePage(d.getDriver());
+//        homePage.closeDialogPopupIfPresent();
+//        CategoryPage categoryPage = homePage.navigateToCategoryPage("NEW");
+//        ProductPage productPage = categoryPage.navigateToProductPage();
+//        productPage.navigateBrowserBack();
+//        Assert.assertTrue(categoryPage.isElementPresent(PRODUCT_NAME), "Its not in PLP page");
+//    }
 
     @Test
     public void validateProductsInAllMainCategories() {
