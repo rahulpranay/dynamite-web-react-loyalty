@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 public class WishListPage extends BasePage {
 
     private final By PRODUCT_NAME = By.xpath("//table[@class = 'MyWishlistTable']//tr[normalize-space(@class) = 'dynamiteRow']/td[3]//a");
+    private final By MOVE_TO_BAG = By.xpath("//td[@id = 'moveToMyBag']//a");
+    private final By CLOSE_BTN = By.xpath("//button[@id = 'cboxClose']");
 
     public WishListPage(WebDriver driver) {
         super(driver);
@@ -16,6 +18,8 @@ public class WishListPage extends BasePage {
     }
 
     public void addProductToBag() {
-        clickOnLink("Move to Bag");
+        waitForElement(MOVE_TO_BAG).click();
+        intentionalWait(2000);
+        clickUsingJS(waitForElement(CLOSE_BTN));
     }
 }

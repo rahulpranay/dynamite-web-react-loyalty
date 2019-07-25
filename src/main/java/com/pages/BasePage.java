@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.util.List;
 import java.util.Objects;
@@ -133,7 +134,7 @@ public class BasePage {
         WebElement webElement = waitForElement(By.id("profilePicture"));
         new Actions(driver).moveToElement(webElement).pause(3000).perform();
         clickOnLink("Wishlist");
-        waitForElement(By.xpath("//span[text() = 'My Wish List'][@class = 'headerTitle3']"));
+        waitForElement(By.xpath("//span[text() = 'My Wish List'][@class = 'headerTitle']"));
         return new WishListPage(driver);
     }
 
@@ -225,11 +226,11 @@ public class BasePage {
     }
 
     public CartPage navigateToCartPage() {
-        String cartIcon = "ShoppingBag";
+        By xpath = By.xpath("//a[@class = 'miniCartLink'] | //*[@id = 'ShoppingBag']");
         try {
-            clickUsingJS(waitForElement(By.id(cartIcon)));
+            clickUsingJS(waitForElement(xpath));
         } catch (Exception e) {
-            clickUsingJS(waitForElement(By.id(cartIcon)));
+            clickUsingJS(waitForElement(xpath));
         }
         return new CartPage(driver);
     }
@@ -306,8 +307,9 @@ public class BasePage {
     public void selectCountryFromPopup() {
         By canadaButton = By
                 .xpath("//div[normalize-space() = 'Canada'][@class = 'countryPickerActionBtn']");
-        if (isElementPresent(canadaButton)) {
-            click(canadaButton);
+        try {
+            new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(canadaButton)).click();
+        } catch (Exception ignored) {
         }
     }
 
@@ -326,5 +328,33 @@ public class BasePage {
     public void navigateBrowserBack() {
         driver.navigate().back();
         waitForPageLoad();
+    }
+
+    public void validateGetRewardPage() {
+        clickUsingJS(waitForElementToClickable(By.id("getRewardedText")));
+        intentionalWait(3000);
+        By xpath = By.xpath("//table[@class = 'benefits-table']");
+        Assert.assertTrue(isElementPresent(xpath), "Benefits table not found in GetRewardPage");
+        String tableDetails = locateElement(xpath).getText();
+        Assert.assertTrue(tableDetails.toUpperCase().contains("BENEFITS"));
+        Assert.assertTrue(tableDetails.toUpperCase().contains("MEMBERS"));
+        Assert.assertTrue(tableDetails.toUpperCase().contains("VIP MEMBERS"));
+    }
+
+    public void validateStoreLocatorPage() {
+        clickUsingJS(waitForElementToClickable(By.xpath("//li[@class = 'storeLocator']//a")));
+        By findAStore = By.xpath("//a[@class = 'storeSearch']");
+        Assert.assertTrue(isElementPresent(findAStore), "FindAStore not found in Store locator page");
+        By location = By.xpath("//li[@class = 'cap']");
+        Assert.assertTrue(isElementPresent(location), "Location not found in Store locator page");
+    }
+
+    public void validateJoinOurNewsLetter() {
+        By enterEmail = By.xpath("//input[@id = 'footerEmailSignUp']");
+        enterText(enterEmail, generateEmail());
+        clickUsingJS(waitForElementToClickable(By.xpath("//div[contains(@class, 'footerEmailSignupBtn')]")));
+        By youAreIn = By.xpath("//a[normalize-space() = \"You're in\"]");
+        waitForElement(youAreIn);
+        Assert.assertTrue(isElementPresent(youAreIn));
     }
 }

@@ -1,7 +1,6 @@
 package com.tests;
 
-import com.pages.CategoryPage;
-import com.pages.HomePage;
+import com.pages.*;
 import com.test.page.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,5 +18,36 @@ public class CategoryPageTestScripts extends BaseTest {
         categoryPage.sortPriceLowToHigh();
         List<Integer> expectedPriceList = categoryPage.getProductPriceList().stream().sorted().collect(Collectors.toList());
         Assert.assertEquals(categoryPage.getProductPriceList(), expectedPriceList);
+    }
+
+    @Test
+    public void validateRewardPage() {
+        HomePage homePage = new HomePage(d.getDriver());
+        homePage.closeDialogPopupIfPresent();
+        homePage.validateGetRewardPage();
+    }
+
+    @Test
+    public void validateStoreLocatorPage() {
+        HomePage homePage = new HomePage(d.getDriver());
+        homePage.closeDialogPopupIfPresent();
+        homePage.validateStoreLocatorPage();
+    }
+
+    @Test
+    public void validateJoinOurNewsLetter() {
+        HomePage homePage = new HomePage(d.getDriver());
+        homePage.closeDialogPopupIfPresent();
+        homePage.validateJoinOurNewsLetter();
+    }
+
+    @Test
+    public void validateCompleteLaterAfterCreatingAccount() {
+        HomePage homePage = new HomePage(d.getDriver());
+        homePage.closeDialogPopupIfPresent();
+        LoginPage loginPage = homePage.navigateToLoginPage();
+        CreateAccountPage createAccountPage = loginPage.clickCreateAccountButton();
+        ProfilePage profilePage = createAccountPage.enterAccountDetails();
+        profilePage.skipPersonalDetails();
     }
 }

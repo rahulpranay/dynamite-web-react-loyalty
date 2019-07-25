@@ -13,9 +13,12 @@ public class CartPage extends BasePage {
     private final By EDIT_LINK = By.xpath("//a[@class = 'pdl_popUp blkLink']");
     private final By PRODUCT_SIZES =
             By.xpath(
-                    "//span[@stockavailability = 'AVAILABLE'][contains(@class, 'size')][not(contains(@class, 'selected'))]");
+                    "//button[@stockavailability = 'AVAILABLE'][contains(@class, 'size')][not(contains(@class, 'selected'))]");
     private final By UPDATE_BTN = By.id("qvUpdateCart");
     private final By SELECTED_SIZE_TEXT = By.xpath("//td[contains(@id, 'Size')]/p[2]");
+    private final By MOVE_TO_WISHLIST = By.xpath("//a[contains(@class, 'cartWLRemoveLink')]");
+    private final By WISH_LIST_MESSAGE = By.xpath("//div[contains(@class, 'wishlistSuccessMessage')]");
+    private final By CLOSE_BTN = By.xpath("//button[@id = 'cboxClose']");
     private String productSize;
 
     public CartPage(WebDriver driver) {
@@ -50,5 +53,12 @@ public class CartPage extends BasePage {
     public void validateUpdatedSize() {
         String actualSize = waitForElement(SELECTED_SIZE_TEXT).getText().trim().split(" ")[1].trim();
         Assert.assertEquals(productSize, actualSize);
+    }
+
+    public void moveItemToWishList() {
+        clickUsingJS(waitForElement(MOVE_TO_WISHLIST));
+        Assert.assertEquals(waitForElement(WISH_LIST_MESSAGE).getText().trim(), "The item has been added to your wish list.");
+        clickUsingJS(waitForElement(CLOSE_BTN));
+        intentionalWait(5000);
     }
 }

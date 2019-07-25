@@ -332,4 +332,29 @@ public class CheckoutTestScripts extends BaseTest {
         productPage = categoryPage.navigateToMiddleProductPage();
         Assert.assertTrue(productPage.isElementPresent(By.xpath(productNameXpath)), "Unable to navigate to product page");
     }
+
+    @Test
+    public void checkoutUsingTheWishList() {
+        HomePage homePage = new HomePage(d.getDriver());
+        homePage.closeDialogPopupIfPresent();
+        LoginPage loginPage = homePage.navigateToLoginPage();
+        CreateAccountPage createAccountPage = loginPage.clickCreateAccountButton();
+        ProfilePage profilePage = createAccountPage.enterAccountDetails();
+        profilePage.fillPersonalDetails();
+        CategoryPage categoryPage = profilePage.navigateToCategoryPage("NEW");
+        categoryPage.addToBag();
+        CartPage cartPage = categoryPage.navigateToCartPage();
+        cartPage.moveItemToWishList();
+        WishListPage wishListPage = cartPage.navigateToWishListPage();
+        wishListPage.addProductToBag();
+        cartPage = wishListPage.navigateToCartPage();
+        CheckoutPage checkoutPage = cartPage.navigateToCheckoutPage();
+        checkoutPage.enterAddressToGetAddressValidatorPopup();
+        checkoutPage.useCorrectedAddress();
+        checkoutPage.clickOnNextStep();
+        checkoutPage.selectPaymentMethodUsingId(TestConstants.INTERAC);
+        //        checkoutPage.clickOnPlaceOrder();
+        //        checkoutPage.placeOrderUsingInterac();
+        //        System.out.println(checkoutPage.getOrderNumber());
+    }
 }

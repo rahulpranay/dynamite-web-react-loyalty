@@ -2,6 +2,8 @@ package com.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 public class ProfilePage extends BasePage {
 
@@ -23,6 +25,8 @@ public class ProfilePage extends BasePage {
     private static By PROFILE_ICON = By.xpath("//li[@id = 'accountLink'][@class = 'welcomeLink'] | //div[contains(@class, 'LoggedInProfilecomponent__ProfileThumbWrapper')]");
     private static By STUDIO_LINK = By.id("profile-studio");
     private static By TOAST_MESSAGE_BANNER = By.xpath("//div[contains(@class, 'ToastNotification__Message')]//span");
+    private static By COMPLETE_LATER = By.xpath("//div[@id = 'skip']//a");
+    private static By MY_STUDIO_HEADER = By.xpath("//div[contains(@class, 'RegularStudio__Title')]");
 
     public ProfilePage(WebDriver driver) {
         super(driver);
@@ -58,5 +62,12 @@ public class ProfilePage extends BasePage {
         intentionalWait(2000);
         clickUsingJS(waitForElement(STUDIO_LINK));
         return new StudioPage(driver);
+    }
+
+    public void skipPersonalDetails() {
+        waitForElement(COMPLETE_LATER).click();
+        intentionalWait(2000);
+        WebElement studioPageHeader = waitForElement(MY_STUDIO_HEADER);
+        Assert.assertEquals(studioPageHeader.getText().trim(), "MY STUDIO");
     }
 }
