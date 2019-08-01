@@ -13,7 +13,7 @@ public class CategoryPage extends BasePage {
 
     public static final By PRODUCT_NAME = By.xpath("//a[contains(@class, 'contentfulTile__TileTitleLink')] | //div[@class = 'pdl_details']/p/a | //a[contains(@class, 'algoliaTile__TileTitleLink')]");
     private static final String ADD_TO_BAG = "addToCartHover_btn_0_";
-    private static final By PRODUCT_SIZE = By.xpath("//div[contains(@class, 'available overlaycomponent__Size')][not(contains(@class, 'not-available'))]");
+    private static final By PRODUCT_SIZE = By.xpath("//button[contains(@class, 'available overlaycomponent__Size')][not(contains(@class, 'not-available'))]");
     private static final By ADD_TO_BAG_BUTTON = By.xpath("//button[contains(@id, 'addToCart_btn')]");
     private static final By PRODUCT_IMAGE = By.xpath("//a[contains(@class, 'overlaycomponent__HoverContainerLink')] | //div[@class = 'prodListingImg']//img");
     private static final By SORTING_ARROW = By.id("sorting-btn");

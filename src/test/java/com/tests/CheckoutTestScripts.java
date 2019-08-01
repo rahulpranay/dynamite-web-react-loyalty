@@ -363,7 +363,7 @@ public class CheckoutTestScripts extends BaseTest {
         HomePage homePage = new HomePage(d.getDriver());
         homePage.closeDialogPopupIfPresent();
         LoginPage loginPage = homePage.navigateToLoginPage();
-        ProfilePage profilePage = loginPage.loginUsingFacebook("arshamirpeta1@gmail.com", "Loyalty01");
+        ProfilePage profilePage = loginPage.loginUsingFacebook("arshamirpeta2@gmail.com", "Loyalty01");
         CategoryPage categoryPage = profilePage.navigateToCategoryPage("NEW");
         ProductPage productPage = categoryPage.navigateToProductPage();
         productPage.addToBag();

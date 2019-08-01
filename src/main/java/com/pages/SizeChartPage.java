@@ -11,7 +11,7 @@ import org.testng.Assert;
 public class SizeChartPage extends BasePage {
 
   private static final By CATEGORIES_TABS =
-      By.xpath("//div[contains(@class, 'sizeChartstyle__TabContainer')]//div/a[@role = 'tab']");
+      By.xpath("//div[contains(@class, 'sizeChart__TabContainer')]//div/a[@role = 'tab']");
 
   public SizeChartPage(WebDriver driver) {
     super(driver);
