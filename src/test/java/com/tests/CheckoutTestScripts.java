@@ -358,23 +358,23 @@ public class CheckoutTestScripts extends BaseTest {
         //        System.out.println(checkoutPage.getOrderNumber());
     }
 
-    @Test
-    public void loginWithFacebookAndCheckout() {
-        HomePage homePage = new HomePage(d.getDriver());
-        homePage.closeDialogPopupIfPresent();
-        LoginPage loginPage = homePage.navigateToLoginPage();
-        ProfilePage profilePage = loginPage.loginUsingFacebook("arshamirpeta2@gmail.com", "Loyalty01");
-        CategoryPage categoryPage = profilePage.navigateToCategoryPage("NEW");
-        ProductPage productPage = categoryPage.navigateToProductPage();
-        productPage.addToBag();
-        CartPage cartPage = productPage.navigateToCartPage();
-        CheckoutPage checkoutPage = cartPage.navigateToCheckoutPage();
-        checkoutPage.enterAddressToGetAddressValidatorPopup();
-        checkoutPage.useCorrectedAddress();
-        checkoutPage.clickOnNextStep();
-        checkoutPage.selectPaymentMethodUsingId(TestConstants.INTERAC);
-        //        checkoutPage.clickOnPlaceOrder();
-        //        checkoutPage.placeOrderUsingInterac();
-        //        System.out.println(checkoutPage.getOrderNumber());
-    }
+    // @Test
+    // public void loginWithFacebookAndCheckout() {
+    //     HomePage homePage = new HomePage(d.getDriver());
+    //     homePage.closeDialogPopupIfPresent();
+    //     LoginPage loginPage = homePage.navigateToLoginPage();
+    //     ProfilePage profilePage = loginPage.loginUsingFacebook("arshamirpeta2@gmail.com", "Loyalty01");
+    //     CategoryPage categoryPage = profilePage.navigateToCategoryPage("NEW");
+    //     ProductPage productPage = categoryPage.navigateToProductPage();
+    //     productPage.addToBag();
+    //     CartPage cartPage = productPage.navigateToCartPage();
+    //     CheckoutPage checkoutPage = cartPage.navigateToCheckoutPage();
+    //     checkoutPage.enterAddressToGetAddressValidatorPopup();
+    //     checkoutPage.useCorrectedAddress();
+    //     checkoutPage.clickOnNextStep();
+    //     checkoutPage.selectPaymentMethodUsingId(TestConstants.INTERAC);
+    //     //        checkoutPage.clickOnPlaceOrder();
+    //     //        checkoutPage.placeOrderUsingInterac();
+    //     //        System.out.println(checkoutPage.getOrderNumber());
+    // }
 }
